@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Keania+One&family=Luckiest+Guy&display=swap");
+
+.teamsPageContainer {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  min-height: 100vh;
+}
+
+.teamsListContainer {
+  width: 100%;
+  max-width: 1024px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  gap: 10px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 500px) {
+  .teamsListContainer {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: 768px) {
+  .teamsListContainer {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .teamsListContainer {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 15px;
+  }
+}

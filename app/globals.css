@@ -9,11 +9,17 @@
   --dark-green: #1a2a08;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .grass-wrapper {
   background-image: url("/assets/images/grass.jpg");
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   position: relative;
   z-index: 0;
