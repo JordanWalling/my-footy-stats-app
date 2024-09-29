@@ -49,7 +49,9 @@ function TeamsListPage() {
         {teamsList.map((team) => {
           return (
             <>
-              <DisplayCard key={team.id} team={team} />
+              <DisplayCard key={team.id}>
+                <h3>{team.name}</h3>
+              </DisplayCard>
             </>
           );
         })}

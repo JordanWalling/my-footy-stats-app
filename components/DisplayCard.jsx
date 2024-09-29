@@ -1,11 +1,7 @@
 import styles from "@/components/DisplayCard.module.css";
 
-function DisplayCard({ team }) {
-  return (
-    <div key={team.id} className={styles.cardContainer}>
-      <h2>{team.name}</h2>
-    </div>
-  );
+function DisplayCard({ children }) {
+  return <div className={styles.cardContainer}>{children}</div>;
 }
 
 export default DisplayCard;

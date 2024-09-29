@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Keania+One&family=Luckiest+Guy&display=swap");
 
 .cardContainer {
-  height: 135px;
+  min-height: 135px;
   width: 135px;
   background-color: var(--dark-green);
   display: flex;
@@ -14,4 +14,9 @@
   text-transform: uppercase;
   font-weight: bold;
   font-size: 20px;
+  cursor: pointer;
+}
+
+.cardContainer:hover {
+  background-color: var(--dark-green-hover);
 }

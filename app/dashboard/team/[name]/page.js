@@ -1,6 +1,7 @@
 "use client";
+import DisplayCard from "@/components/DisplayCard";
 import { usePathname } from "next/navigation";
-
+import styles from "./IndividualTeamPage.module.css";
 function IndividualTeamPage() {
   const pathname = usePathname();
   const teamName = pathname.split("/");
@@ -114,16 +115,150 @@ function IndividualTeamPage() {
   ];
 
   return (
-    <div className="h-full">
-      <h1 className="text-white">Welcome to the {capitalizedTeamName} page</h1>
-      <div>
-        {team.map((player) => (
-          <div key={player.id} className="text-white">
-            <h2>{player.name}</h2>
-            <p>Position: {player.position}</p>
-            <p>Jersey Number: {player.jerseyNumber}</p>
-          </div>
-        ))}
+    <div className={styles.wrapper}>
+      <h1 className={styles.teamTitle}>{capitalizedTeamName}</h1>
+      <div className={styles.teamListContainer}>
+        <div className={styles.propsContainer}>
+          {team.map((player) =>
+            player.jerseyNumber === 8 ||
+            player.jerseyNumber === 9 ||
+            player.jerseyNumber === 10 ? (
+              <DisplayCard key={player.id} className="w-4 h-4">
+                <div className="flex flex-col justify-center items-center">
+                  <h3
+                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
+                  >
+                    {player.name}
+                  </h3>
+                  <p className="text-lg">#{player.jerseyNumber}</p>
+                  <p className="text-sm">{player.position}</p>
+                </div>
+              </DisplayCard>
+            ) : null
+          )}
+        </div>
+        <div className={styles.secondRowContainer}>
+          {team.map((player) =>
+            player.jerseyNumber === 11 || player.jerseyNumber === 12 ? (
+              <DisplayCard key={player.id} className="">
+                <div className="flex flex-col justify-center items-center">
+                  <h3
+                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
+                  >
+                    {player.name}
+                  </h3>
+                  <p className="text-lg">#{player.jerseyNumber}</p>
+                  <p className="text-sm">{player.position}</p>
+                </div>
+              </DisplayCard>
+            ) : null
+          )}
+        </div>
+        <div className="flex flex-wrap justify-center gap-1 mb-1">
+          {team.map((player) =>
+            player.jerseyNumber === 13 ? (
+              <DisplayCard key={player.id} className="">
+                <div className="flex flex-col justify-center items-center">
+                  <h3
+                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
+                  >
+                    {player.name}
+                  </h3>
+                  <p className="text-lg">#{player.jerseyNumber}</p>
+                  <p className="text-sm">{player.position}</p>
+                </div>
+              </DisplayCard>
+            ) : null
+          )}
+        </div>
+        <div className={styles.playmakersContainer}>
+          {team.map((player) =>
+            player.jerseyNumber === 6 || player.jerseyNumber === 7 ? (
+              <DisplayCard key={player.id} className="">
+                <div className="flex flex-col justify-around items-center">
+                  <h3
+                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
+                  >
+                    {player.name}
+                  </h3>
+                  <p className="text-lg">#{player.jerseyNumber}</p>
+                  <p className="text-sm">{player.position}</p>
+                </div>
+              </DisplayCard>
+            ) : null
+          )}
+        </div>
+        <div className={styles.wingersContainer}>
+          {team.map((player) =>
+            player.jerseyNumber === 5 || player.jerseyNumber === 2 ? (
+              <DisplayCard key={player.id} className="">
+                <div className="flex flex-col justify-around items-center">
+                  <h3
+                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
+                  >
+                    {player.name}
+                  </h3>
+                  <p className="text-lg">#{player.jerseyNumber}</p>
+                  <p className="text-sm">{player.position}</p>
+                </div>
+              </DisplayCard>
+            ) : null
+          )}
+        </div>
+        <div className={styles.centresContainer}>
+          {team.map((player) =>
+            player.jerseyNumber === 4 || player.jerseyNumber === 3 ? (
+              <DisplayCard key={player.id} className="">
+                <div className="flex flex-col justify-around items-center">
+                  <h3
+                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
+                  >
+                    {player.name}
+                  </h3>
+                  <p className="text-lg">#{player.jerseyNumber}</p>
+                  <p className="text-sm">{player.position}</p>
+                </div>
+              </DisplayCard>
+            ) : null
+          )}
+        </div>
+        <div className={styles.fullbackContainer}>
+          {team.map((player) =>
+            player.jerseyNumber === 1 ? (
+              <DisplayCard key={player.id} className="">
+                <div className="flex flex-col justify-around items-center">
+                  <h3
+                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
+                  >
+                    {player.name}
+                  </h3>
+                  <p className="text-lg">#{player.jerseyNumber}</p>
+                  <p className="text-sm">{player.position}</p>
+                </div>
+              </DisplayCard>
+            ) : null
+          )}
+        </div>
+        <div className={styles.interchangeContainer}>
+          {team.map((player) =>
+            player.jerseyNumber === 14 ||
+            player.jerseyNumber === 15 ||
+            player.jerseyNumber === 16 ||
+            player.jerseyNumber === 17 ? (
+              <DisplayCard key={player.id} className="">
+                <div className="flex flex-col justify-around items-center">
+                  <h3
+                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
+                  >
+                    {player.name}
+                  </h3>
+                  <p className="text-lg">#{player.jerseyNumber}</p>
+                  <p className="text-sm">{player.position}</p>
+                </div>
+              </DisplayCard>
+            ) : null
+          )}
+        </div>
       </div>
     </div>
   );
