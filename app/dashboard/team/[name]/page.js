@@ -112,6 +112,48 @@ function IndividualTeamPage() {
       position: "Interchange",
       jerseyNumber: 17,
     },
+    {
+      id: 18,
+      name: "Tof Sippley",
+      position: "Reserves",
+      jerseyNumber: 18,
+    },
+    {
+      id: 19,
+      name: "Brad Parker",
+      position: "Reserves",
+      jerseyNumber: 19,
+    },
+    {
+      id: 20,
+      name: "Aaron Woods",
+      position: "Reserves",
+      jerseyNumber: 20,
+    },
+    {
+      id: 21,
+      name: "Jamie Humphreys",
+      position: "Reserves",
+      jerseyNumber: 21,
+    },
+    {
+      id: 22,
+      name: "Clayton Faulolo",
+      position: "Reserves",
+      jerseyNumber: 22,
+    },
+    {
+      id: 23,
+      name: "Gordon C.K.T",
+      position: "Reserves",
+      jerseyNumber: 23,
+    },
+    {
+      id: 24,
+      name: "Raymond Vaega",
+      position: "Reserves",
+      jerseyNumber: 24,
+    },
   ];
 
   return (
@@ -245,6 +287,36 @@ function IndividualTeamPage() {
             player.jerseyNumber === 15 ||
             player.jerseyNumber === 16 ||
             player.jerseyNumber === 17 ? (
+              <DisplayCard key={player.id} className="">
+                <div className="flex flex-col justify-around items-center">
+                  <h3
+                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
+                  >
+                    {player.name}
+                  </h3>
+                  <p className="text-lg">#{player.jerseyNumber}</p>
+                  <p className="text-sm">{player.position}</p>
+                </div>
+              </DisplayCard>
+            ) : null
+          )}
+        </div>
+        <div className={styles.interchangeContainer}>
+          {team.map((player) =>
+            player.jerseyNumber === 17 ||
+            player.jerseyNumber === 18 ||
+            player.jerseyNumber === 19 ||
+            player.jerseyNumber === 20 ||
+            player.jerseyNumber === 21 ||
+            player.jerseyNumber === 22 ||
+            player.jerseyNumber === 23 ||
+            player.jerseyNumber === 24 ||
+            player.jerseyNumber === 25 ||
+            player.jerseyNumber === 26 ||
+            player.jerseyNumber === 27 ||
+            player.jerseyNumber === 28 ||
+            player.jerseyNumber === 29 ||
+            player.jerseyNumber === 30 ? (
               <DisplayCard key={player.id} className="">
                 <div className="flex flex-col justify-around items-center">
                   <h3
