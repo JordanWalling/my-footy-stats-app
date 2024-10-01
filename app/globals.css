@@ -6,7 +6,8 @@
   --white: #ffffff;
   --black: #171717;
   --light-grey: #9b9b9b;
-  --dark-green: #1a2a08;
+  --dark-green: hsl(88, 68%, 10%);
+  --dark-green-hover: hsl(88, 68%, 12%);
 }
 
 * {
