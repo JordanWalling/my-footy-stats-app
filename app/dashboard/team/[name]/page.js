@@ -1,6 +1,7 @@
 "use client";
 import DisplayCard from "@/components/DisplayCard";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import styles from "./IndividualTeamPage.module.css";
 function IndividualTeamPage() {
   const pathname = usePathname();
@@ -165,17 +166,23 @@ function IndividualTeamPage() {
             player.jerseyNumber === 8 ||
             player.jerseyNumber === 9 ||
             player.jerseyNumber === 10 ? (
-              <DisplayCard key={player.id} className="w-4 h-4">
-                <div className="flex flex-col justify-center items-center">
-                  <h3
-                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
-                  >
-                    {player.name}
-                  </h3>
-                  <p className="text-lg">#{player.jerseyNumber}</p>
-                  <p className="text-sm">{player.position}</p>
-                </div>
-              </DisplayCard>
+              <>
+                <Link href={`/dashboard/team/${showTeamName}/${player.id}`}>
+                  <DisplayCard key={player.id} className="w-4 h-4">
+                    <div className="flex flex-col justify-center items-center">
+                      <h3
+                        className={
+                          player.name.length < 14 ? `text-sm` : `text-xs`
+                        }
+                      >
+                        {player.name}
+                      </h3>
+                      <p className="text-lg">#{player.jerseyNumber}</p>
+                      <p className="text-sm">{player.position}</p>
+                    </div>
+                  </DisplayCard>
+                </Link>
+              </>
             ) : null
           )}
         </div>
