@@ -6,15 +6,20 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  position: relative;
 }
 
 .teamTitle {
+  position: fixed;
+  top: 80%;
+  left: 0;
   font-size: 28px;
   text-align: center;
   margin: 20px;
   text-transform: uppercase;
   color: var(--white);
   font-family: "Keania One", sans-serif;
+  z-index: 0;
 }
 
 .teamListContainer {
