@@ -189,102 +189,138 @@ function IndividualTeamPage() {
         <div className={styles.secondRowContainer}>
           {team.map((player) =>
             player.jerseyNumber === 11 || player.jerseyNumber === 12 ? (
-              <DisplayCard key={player.id} className="">
-                <div className="flex flex-col justify-center items-center">
-                  <h3
-                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
-                  >
-                    {player.name}
-                  </h3>
-                  <p className="text-lg">#{player.jerseyNumber}</p>
-                  <p className="text-sm">{player.position}</p>
-                </div>
-              </DisplayCard>
+              <>
+                <Link href={`/dashboard/team/${showTeamName}/${player.id}`}>
+                  <DisplayCard key={player.id} className="w-4 h-4">
+                    <div className="flex flex-col justify-center items-center">
+                      <h3
+                        className={
+                          player.name.length < 14 ? `text-sm` : `text-xs`
+                        }
+                      >
+                        {player.name}
+                      </h3>
+                      <p className="text-lg">#{player.jerseyNumber}</p>
+                      <p className="text-sm">{player.position}</p>
+                    </div>
+                  </DisplayCard>
+                </Link>
+              </>
             ) : null
           )}
         </div>
         <div className="flex flex-wrap justify-center gap-1 mb-1">
           {team.map((player) =>
             player.jerseyNumber === 13 ? (
-              <DisplayCard key={player.id} className="">
-                <div className="flex flex-col justify-center items-center">
-                  <h3
-                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
-                  >
-                    {player.name}
-                  </h3>
-                  <p className="text-lg">#{player.jerseyNumber}</p>
-                  <p className="text-sm">{player.position}</p>
-                </div>
-              </DisplayCard>
+              <>
+                <Link href={`/dashboard/team/${showTeamName}/${player.id}`}>
+                  <DisplayCard key={player.id} className="w-4 h-4">
+                    <div className="flex flex-col justify-center items-center">
+                      <h3
+                        className={
+                          player.name.length < 14 ? `text-sm` : `text-xs`
+                        }
+                      >
+                        {player.name}
+                      </h3>
+                      <p className="text-lg">#{player.jerseyNumber}</p>
+                      <p className="text-sm">{player.position}</p>
+                    </div>
+                  </DisplayCard>
+                </Link>
+              </>
             ) : null
           )}
         </div>
         <div className={styles.playmakersContainer}>
           {team.map((player) =>
             player.jerseyNumber === 6 || player.jerseyNumber === 7 ? (
-              <DisplayCard key={player.id} className="">
-                <div className="flex flex-col justify-around items-center">
-                  <h3
-                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
-                  >
-                    {player.name}
-                  </h3>
-                  <p className="text-lg">#{player.jerseyNumber}</p>
-                  <p className="text-sm">{player.position}</p>
-                </div>
-              </DisplayCard>
+              <>
+                <Link href={`/dashboard/team/${showTeamName}/${player.id}`}>
+                  <DisplayCard key={player.id} className="w-4 h-4">
+                    <div className="flex flex-col justify-center items-center">
+                      <h3
+                        className={
+                          player.name.length < 14 ? `text-sm` : `text-xs`
+                        }
+                      >
+                        {player.name}
+                      </h3>
+                      <p className="text-lg">#{player.jerseyNumber}</p>
+                      <p className="text-sm">{player.position}</p>
+                    </div>
+                  </DisplayCard>
+                </Link>
+              </>
             ) : null
           )}
         </div>
         <div className={styles.wingersContainer}>
           {team.map((player) =>
             player.jerseyNumber === 5 || player.jerseyNumber === 2 ? (
-              <DisplayCard key={player.id} className="">
-                <div className="flex flex-col justify-around items-center">
-                  <h3
-                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
-                  >
-                    {player.name}
-                  </h3>
-                  <p className="text-lg">#{player.jerseyNumber}</p>
-                  <p className="text-sm">{player.position}</p>
-                </div>
-              </DisplayCard>
+              <>
+                <Link href={`/dashboard/team/${showTeamName}/${player.id}`}>
+                  <DisplayCard key={player.id} className="w-4 h-4">
+                    <div className="flex flex-col justify-center items-center">
+                      <h3
+                        className={
+                          player.name.length < 14 ? `text-sm` : `text-xs`
+                        }
+                      >
+                        {player.name}
+                      </h3>
+                      <p className="text-lg">#{player.jerseyNumber}</p>
+                      <p className="text-sm">{player.position}</p>
+                    </div>
+                  </DisplayCard>
+                </Link>
+              </>
             ) : null
           )}
         </div>
         <div className={styles.centresContainer}>
           {team.map((player) =>
             player.jerseyNumber === 4 || player.jerseyNumber === 3 ? (
-              <DisplayCard key={player.id} className="">
-                <div className="flex flex-col justify-around items-center">
-                  <h3
-                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
-                  >
-                    {player.name}
-                  </h3>
-                  <p className="text-lg">#{player.jerseyNumber}</p>
-                  <p className="text-sm">{player.position}</p>
-                </div>
-              </DisplayCard>
+              <>
+                <Link href={`/dashboard/team/${showTeamName}/${player.id}`}>
+                  <DisplayCard key={player.id} className="w-4 h-4">
+                    <div className="flex flex-col justify-center items-center">
+                      <h3
+                        className={
+                          player.name.length < 14 ? `text-sm` : `text-xs`
+                        }
+                      >
+                        {player.name}
+                      </h3>
+                      <p className="text-lg">#{player.jerseyNumber}</p>
+                      <p className="text-sm">{player.position}</p>
+                    </div>
+                  </DisplayCard>
+                </Link>
+              </>
             ) : null
           )}
         </div>
         <div className={styles.fullbackContainer}>
           {team.map((player) =>
             player.jerseyNumber === 1 ? (
-              <DisplayCard key={player.id} className="">
-                <div className="flex flex-col justify-around items-center">
-                  <h3
-                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
-                  >
-                    {player.name}
-                  </h3>
-                  <p className="text-lg">#{player.jerseyNumber}</p>
-                  <p className="text-sm">{player.position}</p>
-                </div>
-              </DisplayCard>
+              <>
+                <Link href={`/dashboard/team/${showTeamName}/${player.id}`}>
+                  <DisplayCard key={player.id} className="w-4 h-4">
+                    <div className="flex flex-col justify-center items-center">
+                      <h3
+                        className={
+                          player.name.length < 14 ? `text-sm` : `text-xs`
+                        }
+                      >
+                        {player.name}
+                      </h3>
+                      <p className="text-lg">#{player.jerseyNumber}</p>
+                      <p className="text-sm">{player.position}</p>
+                    </div>
+                  </DisplayCard>
+                </Link>
+              </>
             ) : null
           )}
         </div>
@@ -294,17 +330,23 @@ function IndividualTeamPage() {
             player.jerseyNumber === 15 ||
             player.jerseyNumber === 16 ||
             player.jerseyNumber === 17 ? (
-              <DisplayCard key={player.id} className="">
-                <div className="flex flex-col justify-around items-center">
-                  <h3
-                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
-                  >
-                    {player.name}
-                  </h3>
-                  <p className="text-lg">#{player.jerseyNumber}</p>
-                  <p className="text-sm">{player.position}</p>
-                </div>
-              </DisplayCard>
+              <>
+                <Link href={`/dashboard/team/${showTeamName}/${player.id}`}>
+                  <DisplayCard key={player.id} className="w-4 h-4">
+                    <div className="flex flex-col justify-center items-center">
+                      <h3
+                        className={
+                          player.name.length < 14 ? `text-sm` : `text-xs`
+                        }
+                      >
+                        {player.name}
+                      </h3>
+                      <p className="text-lg">#{player.jerseyNumber}</p>
+                      <p className="text-sm">{player.position}</p>
+                    </div>
+                  </DisplayCard>
+                </Link>
+              </>
             ) : null
           )}
         </div>
@@ -324,17 +366,23 @@ function IndividualTeamPage() {
             player.jerseyNumber === 28 ||
             player.jerseyNumber === 29 ||
             player.jerseyNumber === 30 ? (
-              <DisplayCard key={player.id} className="">
-                <div className="flex flex-col justify-around items-center">
-                  <h3
-                    className={player.name.length < 14 ? `text-sm` : `text-xs`}
-                  >
-                    {player.name}
-                  </h3>
-                  <p className="text-lg">#{player.jerseyNumber}</p>
-                  <p className="text-sm">{player.position}</p>
-                </div>
-              </DisplayCard>
+              <>
+                <Link href={`/dashboard/team/${showTeamName}/${player.id}`}>
+                  <DisplayCard key={player.id} className="w-4 h-4">
+                    <div className="flex flex-col justify-center items-center">
+                      <h3
+                        className={
+                          player.name.length < 14 ? `text-sm` : `text-xs`
+                        }
+                      >
+                        {player.name}
+                      </h3>
+                      <p className="text-lg">#{player.jerseyNumber}</p>
+                      <p className="text-sm">{player.position}</p>
+                    </div>
+                  </DisplayCard>
+                </Link>
+              </>
             ) : null
           )}
         </div>

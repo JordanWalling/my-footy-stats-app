@@ -1,8 +1,10 @@
 "use client";
 import DisplayCard from "@/components/DisplayCard";
 import { usePathname } from "next/navigation";
-
+import styles from "./IndividualPlayerStats.module.css";
+import { useState } from "react";
 function IndividualPlayerStats() {
+  const [teamChosen, setTeamChosen] = useState("");
   const playerStats = [
     {
       id: 1,
@@ -13,8 +15,8 @@ function IndividualPlayerStats() {
       metresRun: 240,
       tryAssists: 0,
       tackleBreaks: 2,
-      location: "4 Pines Park, Brookvale",
-      opposition: "Canberra Raiders",
+      location: "Raiders",
+      opposition: "Raiders",
     },
     {
       id: 2,
@@ -25,8 +27,8 @@ function IndividualPlayerStats() {
       metresRun: 360,
       tryAssists: 1,
       tackleBreaks: 3,
-      location: "GIO Stadium, Canberra",
-      opposition: "Canberra Raiders",
+      location: "Raiders",
+      opposition: "Raiders",
     },
     {
       id: 3,
@@ -38,20 +40,65 @@ function IndividualPlayerStats() {
       tryAssists: 2,
       tackleBreaks: 4,
       location: "Newcastle",
-      opposition: "Newcastle Knights",
+      opposition: "Knights",
     },
   ];
-  return (
-    <div className="h-screen">
-      <h1>Individual Player Stats</h1>
-      <p>This page will display individual player stats.</p>
 
-      <ul>
-        {playerStats.map((game) => {
+  const playerStatsAgainstTeam = teamChosen
+    ? playerStats.filter((game) => game.opposition === teamChosen)
+    : playerStats;
+  return (
+    <div className={styles.statsPage}>
+      <form className={styles.statsForm}>
+        <DisplayCard>
+          <div className={styles.statsFormContents}>
+            <h3>Enter a Team to Show Player Stats</h3>
+            <select
+              onChange={(e) => setTeamChosen(e.target.value)}
+              value={teamChosen}
+            >
+              <option value="" disabled>
+                Select a Team
+              </option>
+
+              <option value="Raiders">Raiders</option>
+              <option value="Knights">Knights</option>
+            </select>
+          </div>
+        </DisplayCard>
+      </form>
+
+      <ul className={styles.statsWrapper}>
+        {playerStatsAgainstTeam.map((game) => {
           return (
-            <div key={game.id}>
-              <li>{game.tries}</li>
-            </div>
+            <>
+              <DisplayCard>
+                <li key={game.id} className={styles.li}>
+                  <div className={styles.statGroup}>
+                    <div className={styles.statName}>
+                      <p>Opposition: </p>
+                      <p>Tries: </p>
+                      <p>Try Assists: </p>
+                      <p>Metres Run: </p>
+                      <p>Tackles: </p>
+                      <p>Missed Tackles: </p>
+                      <p>Tackle Breaks: </p>
+                      <p>Location: </p>
+                    </div>
+                    <div className={styles.statValue}>
+                      <p>{game.opposition}</p>
+                      <p>{game.tries}</p>
+                      <p>{game.tryAssists}</p>
+                      <p>{game.metresRun}</p>
+                      <p>{game.tackles}</p>
+                      <p>{game.missedTackles}</p>
+                      <p>{game.tackleBreaks}</p>
+                      <p>{game.location}</p>
+                    </div>
+                  </div>
+                </li>
+              </DisplayCard>
+            </>
           );
         })}
       </ul>
