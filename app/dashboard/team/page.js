@@ -1,5 +1,5 @@
-import DisplayCard from "@/components/DisplayCard";
 import styles from "./TeamsListPage.module.css";
+import DisplayTeamsList from "@/components/DisplayTeamsList";
 function TeamsListPage() {
   const teamsList = [
     {
@@ -47,13 +47,7 @@ function TeamsListPage() {
     <div className={styles.teamsPageContainer}>
       <div className={styles.teamsListContainer}>
         {teamsList.map((team) => {
-          return (
-            <>
-              <DisplayCard key={team.id}>
-                <h3>{team.name}</h3>
-              </DisplayCard>
-            </>
-          );
+          return <DisplayTeamsList team={team} key={team.id} />;
         })}
       </div>
     </div>
