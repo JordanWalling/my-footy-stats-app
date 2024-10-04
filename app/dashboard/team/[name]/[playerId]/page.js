@@ -63,6 +63,7 @@ function IndividualPlayerStats() {
 
               <option value="Raiders">Raiders</option>
               <option value="Knights">Knights</option>
+              <option value="Roosters">Roosters</option>
             </select>
           </div>
         </DisplayCard>
