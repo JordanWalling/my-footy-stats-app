@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap");
+
+.statsPage {
+  min-height: 100vh;
+  padding-top: 10px;
+}
+
+.statsForm {
+  width: 80%;
+  max-width: 600px;
+  /* height: 200px; */
+  /* border: 2px solid purple; */
+  margin: 10px auto 20px auto;
+}
+
+.statsFormContents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.statsFormContents h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.statsFormContents select {
+  color: black;
+  text-align: center;
+  padding: 2px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.statsFormContents option {
+  color: black;
+}
+
+.statsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  /* border: 2px solid red; */
+  gap: 10px;
+}
+
+.statsWrapper .li {
+  font-family: "Jura", sans-serif;
+  /* border: 2px solid green; */
+  height: 100%;
+  flex: 1;
+  /* min-width: 150px; */
+  display: flex;
+  padding: 5px;
+}
+
+.statsWrapper p {
+  font-family: "Jura", sans-serif;
+  font-size: 16px;
+}
+
+.statGroup {
+  display: flex;
+  margin: 4px auto;
+  width: 100%;
+  gap: 10px;
+}
+
+.statName {
+  flex: 2 1 150px;
+  text-transform: capitalize;
+  text-align: end;
+  flex-wrap: nowrap;
+}
+
+.statName p {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.statValue {
+  flex: 1;
+  text-align: start;
+}
+
+.statValue p {
+  font-size: 14px;
+  font-weight: 100;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 768px) {
+  .statsFormContents h3 {
+    font-size: 24px;
+  }
+  .statsForm {
+    margin: 20px auto 40px auto;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .statsForm {
+    margin: 20px auto 60px auto;
+  }
+}
+/* END OF MEDIA QUERIES */
