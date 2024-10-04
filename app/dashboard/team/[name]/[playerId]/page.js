@@ -3,6 +3,8 @@ import DisplayCard from "@/components/DisplayCard";
 import { usePathname } from "next/navigation";
 import styles from "./IndividualPlayerStats.module.css";
 import { useState } from "react";
+import DisplayPlayerGameStats from "@/components/DisplayPlayerGameStats";
+import PlayerStatsForm from "@/components/PlayerStatsForm";
 function IndividualPlayerStats() {
   const [teamChosen, setTeamChosen] = useState("");
   const playerStats = [
@@ -49,55 +51,16 @@ function IndividualPlayerStats() {
     : playerStats;
   return (
     <div className={styles.statsPage}>
-      <form className={styles.statsForm}>
-        <DisplayCard>
-          <div className={styles.statsFormContents}>
-            <h3>Enter a Team to Show Player Stats</h3>
-            <select
-              onChange={(e) => setTeamChosen(e.target.value)}
-              value={teamChosen}
-            >
-              <option value="" disabled>
-                Select a Team
-              </option>
-
-              <option value="Raiders">Raiders</option>
-              <option value="Knights">Knights</option>
-              <option value="Roosters">Roosters</option>
-            </select>
-          </div>
-        </DisplayCard>
-      </form>
+      {/* Form Stats Filter */}
+      <PlayerStatsForm teamChosen={teamChosen} setTeamChosen={setTeamChosen} />
 
       <ul className={styles.statsWrapper}>
         {playerStatsAgainstTeam.map((game) => {
           return (
             <>
               <DisplayCard>
-                <li key={game.id} className={styles.li}>
-                  <div className={styles.statGroup}>
-                    <div className={styles.statName}>
-                      <p>Opposition: </p>
-                      <p>Tries: </p>
-                      <p>Try Assists: </p>
-                      <p>Metres Run: </p>
-                      <p>Tackles: </p>
-                      <p>Missed Tackles: </p>
-                      <p>Tackle Breaks: </p>
-                      <p>Location: </p>
-                    </div>
-                    <div className={styles.statValue}>
-                      <p>{game.opposition}</p>
-                      <p>{game.tries}</p>
-                      <p>{game.tryAssists}</p>
-                      <p>{game.metresRun}</p>
-                      <p>{game.tackles}</p>
-                      <p>{game.missedTackles}</p>
-                      <p>{game.tackleBreaks}</p>
-                      <p>{game.location}</p>
-                    </div>
-                  </div>
-                </li>
+                {/* Show Individual Player Stats */}
+                <DisplayPlayerGameStats game={game} />
               </DisplayCard>
             </>
           );

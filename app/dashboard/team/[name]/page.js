@@ -4,8 +4,10 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import styles from "./IndividualTeamPage.module.css";
 import DisplayPlayerCard from "@/components/DisplayPlayerCard";
+import { useState } from "react";
 
 function IndividualTeamPage() {
+  const [showTeam, setShowTeam] = useState(false);
   const pathname = usePathname();
   const teamName = pathname.split("/");
   const showTeamName = teamName[3];
@@ -174,23 +176,37 @@ function IndividualTeamPage() {
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.teamTitle}>{capitalizedTeamName}</h1>
-      <div className={styles.teamListContainer}>
-        <div className={styles.propsContainer}>{renderTeam([8, 9, 10])}</div>
-        <div className={styles.secondRowContainer}>{renderTeam([11, 12])}</div>
-        <div className="flex flex-wrap justify-center gap-1 mb-1">
-          {renderTeam([13])}
+      {/* Add styling for buttons */}
+      <button onClick={() => setShowTeam(true)}>Show Team</button>
+      <button onClick={() => setShowTeam(false)}>Show Teams Game</button>
+      {showTeam ? (
+        <div className={styles.teamListContainer}>
+          <div className={styles.propsContainer}>{renderTeam([8, 9, 10])}</div>
+          <div className={styles.secondRowContainer}>
+            {renderTeam([11, 12])}
+          </div>
+          <div className="flex flex-wrap justify-center gap-1 mb-1">
+            {renderTeam([13])}
+          </div>
+          <div className={styles.playmakersContainer}>{renderTeam([6, 7])}</div>
+          <div className={styles.wingersContainer}>{renderTeam([5, 2])}</div>
+          <div className={styles.centresContainer}>{renderTeam([4, 3])}</div>
+          <div className={styles.fullbackContainer}>{renderTeam([1])}</div>
+          <div className={styles.interchangeContainer}>
+            {renderTeam([14, 15, 16, 17])}
+          </div>
+          <div className={styles.interchangeContainer}>
+            {renderTeam([
+              17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+            ])}
+          </div>
         </div>
-        <div className={styles.playmakersContainer}>{renderTeam([6, 7])}</div>
-        <div className={styles.wingersContainer}>{renderTeam([5, 2])}</div>
-        <div className={styles.centresContainer}>{renderTeam([4, 3])}</div>
-        <div className={styles.fullbackContainer}>{renderTeam([1])}</div>
-        <div className={styles.interchangeContainer}>
-          {renderTeam([14, 15, 16, 17])}
+      ) : (
+        // Add styling for Games Played and Add Game layout
+        <div>
+          <h1>Show Team Games Played</h1>
         </div>
-        <div className={styles.interchangeContainer}>
-          {renderTeam([17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30])}
-        </div>
-      </div>
+      )}
     </div>
   );
 }

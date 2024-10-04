@@ -1,5 +1,7 @@
 "use client";
+import HomePageForm from "@/components/HomePageForm";
 import { useState } from "react";
+
 import styles from "@/app/HomePage.module.css";
 
 export default function Home() {
@@ -18,21 +20,14 @@ export default function Home() {
           <h1 className={styles.mainHeading}>My Footy App</h1>
           <h3>Players & Team Stats</h3>
           <div className={styles.formContainer}>
-            <form onSubmit={handleSubmit}>
-              <input
-                type="email" // Corrected input type
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="*********"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <button type="submit">Send It</button>
-            </form>
+            {/* Login Form */}
+            <HomePageForm
+              email={email}
+              setEmail={setEmail}
+              password={password}
+              setPassword={setPassword}
+              handleSubmit={handleSubmit}
+            />
           </div>
         </div>
       </div>
