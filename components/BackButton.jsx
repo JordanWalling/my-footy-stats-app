@@ -1,14 +1,13 @@
 import { TbChevronLeft } from "react-icons/tb";
 import styles from "./BackButton.module.css";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const BackButton = () => {
+  const router = useRouter();
   return (
-    <Link href={`/dashboard/team`}>
-      <button className={styles.button}>
-        <TbChevronLeft />
-      </button>
-    </Link>
+    <button className={styles.button} onClick={() => router.back()}>
+      <TbChevronLeft />
+    </button>
   );
 };
 export default BackButton;

@@ -5,6 +5,7 @@ import styles from "./IndividualPlayerStats.module.css";
 import { useState } from "react";
 import DisplayPlayerGameStats from "@/components/DisplayPlayerGameStats";
 import PlayerStatsForm from "@/components/PlayerStatsForm";
+import BackButton from "@/components/BackButton";
 function IndividualPlayerStats() {
   const [teamChosen, setTeamChosen] = useState("");
   const playerStats = [
@@ -51,6 +52,7 @@ function IndividualPlayerStats() {
     : playerStats;
   return (
     <div className={styles.statsPage}>
+      <BackButton />
       {/* Form Stats Filter */}
       <PlayerStatsForm teamChosen={teamChosen} setTeamChosen={setTeamChosen} />
 
