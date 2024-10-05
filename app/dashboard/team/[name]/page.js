@@ -7,7 +7,8 @@ import DisplayPlayerCard from "@/components/DisplayPlayerCard";
 import { useState } from "react";
 
 function IndividualTeamPage() {
-  const [showTeam, setShowTeam] = useState(false);
+  const [showTeam, setShowTeam] = useState(true);
+  const [yearChosen, setYearChosen] = useState("");
   const pathname = usePathname();
   const teamName = pathname.split("/");
   const showTeamName = teamName[3];
@@ -161,6 +162,117 @@ function IndividualTeamPage() {
     },
   ];
 
+  const games = [
+    {
+      id: 1,
+      year: 2024,
+      homeTeam: "Sea Eagles",
+      awayTeam: "Raiders",
+      homeTeamScore: 26,
+      awayTeamScore: 20,
+    },
+    {
+      id: 2,
+      year: 2024,
+      homeTeam: "Raiders",
+      awayTeam: "Sea Eagles",
+      homeTeamScore: 6,
+      awayTeamScore: 32,
+    },
+    {
+      id: 3,
+      year: 2024,
+      homeTeam: "Sea Eagles",
+      awayTeam: "Roosters",
+      homeTeamScore: 25,
+      awayTeamScore: 19,
+    },
+    {
+      id: 4,
+      year: 2024,
+      homeTeam: "Roosters",
+      awayTeam: "Sea Eagles",
+      homeTeamScore: 32,
+      awayTeamScore: 12,
+    },
+    {
+      id: 5,
+      year: 2023,
+      homeTeam: "Sea Eagles",
+      awayTeam: "Raiders",
+      homeTeamScore: 26,
+      awayTeamScore: 20,
+    },
+    {
+      id: 6,
+      year: 2023,
+      homeTeam: "Raiders",
+      awayTeam: "Sea Eagles",
+      homeTeamScore: 6,
+      awayTeamScore: 32,
+    },
+    {
+      id: 7,
+      year: 2023,
+      homeTeam: "Sea Eagles",
+      awayTeam: "Roosters",
+      homeTeamScore: 25,
+      awayTeamScore: 19,
+    },
+    {
+      id: 8,
+      year: 2023,
+      homeTeam: "Roosters",
+      awayTeam: "Sea Eagles",
+      homeTeamScore: 32,
+      awayTeamScore: 12,
+    },
+    {
+      id: 9,
+      year: 2022,
+      homeTeam: "Sea Eagles",
+      awayTeam: "Raiders",
+      homeTeamScore: 26,
+      awayTeamScore: 20,
+    },
+    {
+      id: 10,
+      year: 2022,
+      homeTeam: "Raiders",
+      awayTeam: "Sea Eagles",
+      homeTeamScore: 6,
+      awayTeamScore: 32,
+    },
+    {
+      id: 11,
+      year: 2022,
+      homeTeam: "Sea Eagles",
+      awayTeam: "Roosters",
+      homeTeamScore: 25,
+      awayTeamScore: 19,
+    },
+    {
+      id: 12,
+      year: 2022,
+      homeTeam: "Roosters",
+      awayTeam: "Sea Eagles",
+      homeTeamScore: 32,
+      awayTeamScore: 12,
+    },
+    {
+      id: 12,
+      year: 2022,
+      homeTeam: "Roosters",
+      awayTeam: "Sea Eagles",
+      homeTeamScore: 40,
+      awayTeamScore: 12,
+    },
+  ];
+
+  const renderTeamGame = yearChosen
+    ? games.filter((game) => game.year === Number(yearChosen))
+    : games;
+
   const renderTeam = (playerId) => {
     return team
       .filter((player) => playerId.includes(player.jerseyNumber))
@@ -203,8 +315,62 @@ function IndividualTeamPage() {
         </div>
       ) : (
         // Add styling for Games Played and Add Game layout
-        <div>
+        <div className={styles.allGamesContainer}>
           <h1>Show Team Games Played</h1>
+          <div>
+            <form>
+              <label htmlFor="year">Year:</label>
+              <select
+                onChange={(e) => {
+                  const chosenYear = e.target.value;
+                  console.log("Year chosen:", chosenYear); // Debug line
+                  setYearChosen(chosenYear);
+                }}
+                value={yearChosen}
+              >
+                <option value="">Select A Year</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+              </select>
+            </form>
+          </div>
+
+          {renderTeamGame.map((game) => {
+            return (
+              <>
+                <div className={styles.gamesContainer}>
+                  <div className={styles.game}>
+                    <div className={styles.homeSection}>
+                      <p className={styles.entriesHeading}>Home </p>
+                      <p className={styles.entries}>{game.homeTeam}</p>
+                    </div>
+                    {/* <div className="mr-2">
+                      <p className={styles.entriesHeading}>VS</p>
+                    </div> */}
+                    <div className={styles.awaySection}>
+                      <p className={styles.entriesHeading}>Away</p>
+                      <p className={styles.entries}>{game.awayTeam}</p>
+                    </div>
+                    <div>
+                      <p className={styles.entriesHeading}>Score</p>
+                      <div className="flex">
+                        <p className={styles.entries}>{game.homeTeamScore}</p>
+                        <p className="w-full flex justify-center items-center text-white">
+                          -
+                        </p>
+                        <p className={styles.entries}>{game.awayTeamScore}</p>
+                      </div>
+                    </div>
+                    <div>
+                      <p className={styles.entriesHeading}>Year</p>
+                      <p className={styles.entries}>{game.year}</p>
+                    </div>
+                  </div>
+                </div>
+              </>
+            );
+          })}
         </div>
       )}
     </div>
