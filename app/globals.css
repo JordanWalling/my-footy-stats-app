@@ -2,12 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Keania+One&family=Luckiest+Guy&display=swap");
+
 :root {
   --white: #ffffff;
   --black: #171717;
   --light-grey: #9b9b9b;
   --dark-green: hsl(88, 68%, 10%);
   --dark-green-hover: hsl(88, 68%, 12%);
+  --font-primary: "Keania One", sans-serif;
 }
 
 * {
