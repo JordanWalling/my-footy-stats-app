@@ -6,6 +6,7 @@ import Link from "next/link";
 import styles from "./IndividualTeamPage.module.css";
 import DisplayPlayerCard from "@/components/DisplayPlayerCard";
 import { useState } from "react";
+import BackButton from "@/components/BackButton";
 
 function IndividualTeamPage() {
   const [showTeam, setShowTeam] = useState(true);
@@ -288,11 +289,9 @@ function IndividualTeamPage() {
 
   return (
     <div className={styles.wrapper}>
+      <BackButton />
       <h1 className={styles.teamTitle}>{capitalizedTeamName}</h1>
-      {/* Add styling for buttons */}
       <ButtonTeamToggle setShowTeam={setShowTeam} />
-      {/* <button onClick={() => setShowTeam(true)}>Show Team</button>
-      <button onClick={() => setShowTeam(false)}>Show Teams Game</button> */}
       {showTeam ? (
         <div className={styles.teamListContainer}>
           <div className={styles.propsContainer}>{renderTeam([8, 9, 10])}</div>
