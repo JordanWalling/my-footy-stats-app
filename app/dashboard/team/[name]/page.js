@@ -316,8 +316,10 @@ function IndividualTeamPage() {
       ) : (
         // Add styling for Games Played and Add Game layout
         <div className={styles.allGamesContainer}>
-          <h1>Show Team Games Played</h1>
-          <div>
+          <div className={styles.gamesHeadingContainer}>
+            <h1>Filter Games By Year</h1>
+          </div>
+          <div className={styles.gameForm}>
             <form>
               <label htmlFor="year">Year:</label>
               <select
@@ -328,7 +330,7 @@ function IndividualTeamPage() {
                 }}
                 value={yearChosen}
               >
-                <option value="">Select A Year</option>
+                <option value="">Select a Year</option>
                 <option value="2024">2024</option>
                 <option value="2023">2023</option>
                 <option value="2022">2022</option>

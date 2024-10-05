@@ -88,9 +88,9 @@
   margin-bottom: 20px;
 }
 
-.allGamesContainer {
+/* .allGamesContainer {
   min-height: 100%;
-}
+} */
 
 .gamesContainer {
   background-color: var(--dark-green);
@@ -100,7 +100,49 @@
   width: 300px;
   margin: 0 auto;
   margin-bottom: 10px;
-  border: 2px solid purple;
+  /* border: 2px solid purple; */
+}
+
+.gamesHeadingContainer {
+  width: 100%;
+  margin-bottom: 10px;
+
+  padding: 5px;
+}
+
+.gamesHeadingContainer h1 {
+  color: var(--white);
+  text-transform: uppercase;
+  font-family: "Keania One", sans-serif;
+  font-size: 22px;
+}
+
+.gameForm {
+  margin-bottom: 10px;
+  background-color: var(--dark-green-hover);
+  border-radius: 5px;
+}
+
+.gameForm form {
+  padding: 10px;
+
+  display: flex;
+  align-items: center;
+}
+
+.gameForm label {
+  font-family: "Keania One", sans-serif;
+  font-size: 18px;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.gameForm select {
+  border-radius: 5px;
+  font-family: "Jura", sans-serif;
+  font-weight: 100;
+  cursor: pointer;
 }
 
 .game {
@@ -187,6 +229,13 @@
   }
   .gamesContainer {
     width: 600px;
+  }
+  .gamesHeadingContainer h1 {
+    font-size: 26px;
+  }
+  .gameForm label {
+    font-size: 22px;
+    margin-right: 20px;
   }
   .entriesHeading {
     font-size: 20px;
