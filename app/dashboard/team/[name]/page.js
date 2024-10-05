@@ -1,5 +1,6 @@
 "use client";
 import DisplayCard from "@/components/DisplayCard";
+import ButtonTeamToggle from "@/components/ButtonTeamToggle";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import styles from "./IndividualTeamPage.module.css";
@@ -289,8 +290,9 @@ function IndividualTeamPage() {
     <div className={styles.wrapper}>
       <h1 className={styles.teamTitle}>{capitalizedTeamName}</h1>
       {/* Add styling for buttons */}
-      <button onClick={() => setShowTeam(true)}>Show Team</button>
-      <button onClick={() => setShowTeam(false)}>Show Teams Game</button>
+      <ButtonTeamToggle setShowTeam={setShowTeam} />
+      {/* <button onClick={() => setShowTeam(true)}>Show Team</button>
+      <button onClick={() => setShowTeam(false)}>Show Teams Game</button> */}
       {showTeam ? (
         <div className={styles.teamListContainer}>
           <div className={styles.propsContainer}>{renderTeam([8, 9, 10])}</div>
