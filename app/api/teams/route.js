@@ -26,3 +26,14 @@ export async function POST(request) {
     return NextResponse.json({ message: "Internal error: " }, { status: 500 });
   }
 }
+
+export async function GET(request) {
+  try {
+    await dbConnect();
+
+    const teams = await Team.find().sort({ name: 1 });
+    return NextResponse.json(teams);
+  } catch (error) {
+    return NextResponse.json({ message: "Internal Error" }, { status: 500 });
+  }
+}
