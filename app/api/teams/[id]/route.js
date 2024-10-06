@@ -34,3 +34,17 @@ export async function PUT(request, { params }) {
     return NextResponse.json({ error: error.message });
   }
 }
+
+export async function GET(request, { params }) {
+  await dbConnect();
+  try {
+    const { id } = params;
+    const team = await Team.findById(id);
+    if (!team) {
+      return NextResponse.json({ message: "Team not found" });
+    }
+    return NextResponse.json(team);
+  } catch (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
