@@ -1,5 +1,6 @@
 import dbConnect from "@/lib/dbConnect";
 import Team from "@/models/Team";
+import Player from "@/models/Player";
 import { NextResponse } from "next/server";
 
 export async function DELETE(request, { params }) {
@@ -39,7 +40,7 @@ export async function GET(request, { params }) {
   await dbConnect();
   try {
     const { id } = params;
-    const team = await Team.findById(id);
+    const team = await Team.findById(id).populate("players");
     if (!team) {
       return NextResponse.json({ message: "Team not found" });
     }
