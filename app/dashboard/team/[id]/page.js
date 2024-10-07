@@ -2,167 +2,185 @@
 import DisplayCard from "@/components/DisplayCard";
 import ButtonTeamToggle from "@/components/ButtonTeamToggle";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "./IndividualTeamPage.module.css";
 import DisplayPlayerCard from "@/components/DisplayPlayerCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BackButton from "@/components/BackButton";
 
 function IndividualTeamPage() {
   const [showTeam, setShowTeam] = useState(true);
   const [yearChosen, setYearChosen] = useState("");
+  const [team, setTeam] = useState([]);
   const pathname = usePathname();
-  const teamName = pathname.split("/");
-  const showTeamName = teamName[3];
-  const capitalizedTeamName = showTeamName.replace(/([A-Z])/g, " $1");
-  console.log(capitalizedTeamName);
+  console.log("Current pathname: ", pathname);
+  const id = pathname.split("/")[3];
 
-  const team = [
-    {
-      id: 1,
-      name: "Tom Trbojevic",
-      position: "Fullback",
-      jerseyNumber: 1,
-    },
-    {
-      id: 2,
-      name: "Jason Saab",
-      position: "Right Wing",
-      jerseyNumber: 2,
-    },
-    {
-      id: 3,
-      name: "Reuben Garrick",
-      position: "Right Centre",
-      jerseyNumber: 3,
-    },
-    {
-      id: 4,
-      name: "Tolu Koula",
-      position: "Left Centre",
-      jerseyNumber: 4,
-    },
-    {
-      id: 5,
-      name: "Tommy Talau",
-      position: "Left Wing",
-      jerseyNumber: 5,
-    },
-    {
-      id: 6,
-      name: "Luke Brooks",
-      position: "Five Eight",
-      jerseyNumber: 6,
-    },
-    {
-      id: 7,
-      name: "Daly Cherry Evans",
-      position: "Half Back",
-      jerseyNumber: 7,
-    },
-    {
-      id: 8,
-      name: "Taniela Paseka",
-      position: "Prop",
-      jerseyNumber: 8,
-    },
-    {
-      id: 9,
-      name: "Lachlan Croker",
-      position: "Hooker",
-      jerseyNumber: 9,
-    },
-    {
-      id: 10,
-      name: "Matt Lodge",
-      position: "Prop",
-      jerseyNumber: 10,
-    },
-    {
-      id: 11,
-      name: "Haumole Olakuatau",
-      position: "Second Row",
-      jerseyNumber: 11,
-    },
-    {
-      id: 12,
-      name: "Karl Lawton",
-      position: "Second Row",
-      jerseyNumber: 12,
-    },
-    {
-      id: 13,
-      name: "Jake Trbojevic",
-      position: "Lock",
-      jerseyNumber: 13,
-    },
-    {
-      id: 14,
-      name: "Nathan Brown",
-      position: "Interchange",
-      jerseyNumber: 14,
-    },
-    {
-      id: 15,
-      name: "Ben Trbojevic",
-      position: "Interchange",
-      jerseyNumber: 15,
-    },
-    {
-      id: 16,
-      name: "Ethan Bullemor",
-      position: "Interchange",
-      jerseyNumber: 16,
-    },
-    {
-      id: 17,
-      name: "Josh Aloai",
-      position: "Interchange",
-      jerseyNumber: 17,
-    },
-    {
-      id: 18,
-      name: "Tof Sippley",
-      position: "Reserves",
-      jerseyNumber: 18,
-    },
-    {
-      id: 19,
-      name: "Brad Parker",
-      position: "Reserves",
-      jerseyNumber: 19,
-    },
-    {
-      id: 20,
-      name: "Aaron Woods",
-      position: "Reserves",
-      jerseyNumber: 20,
-    },
-    {
-      id: 21,
-      name: "Jamie Humphreys",
-      position: "Reserves",
-      jerseyNumber: 21,
-    },
-    {
-      id: 22,
-      name: "Clayton Faulolo",
-      position: "Reserves",
-      jerseyNumber: 22,
-    },
-    {
-      id: 23,
-      name: "Gordon C.K.T",
-      position: "Reserves",
-      jerseyNumber: 23,
-    },
-    {
-      id: 24,
-      name: "Raymond Vaega",
-      position: "Reserves",
-      jerseyNumber: 24,
-    },
-  ];
+  //   const teamOne = [
+  //     {
+  //       id: 1,
+  //       name: "Tom Trbojevic",
+  //       position: "Fullback",
+  //       jerseyNumber: 1,
+  //     },
+  //     {
+  //       id: 2,
+  //       name: "Jason Saab",
+  //       position: "Right Wing",
+  //       jerseyNumber: 2,
+  //     },
+  //     {
+  //       id: 3,
+  //       name: "Reuben Garrick",
+  //       position: "Right Centre",
+  //       jerseyNumber: 3,
+  //     },
+  //     {
+  //       id: 4,
+  //       name: "Tolu Koula",
+  //       position: "Left Centre",
+  //       jerseyNumber: 4,
+  //     },
+  //     {
+  //       id: 5,
+  //       name: "Tommy Talau",
+  //       position: "Left Wing",
+  //       jerseyNumber: 5,
+  //     },
+  //     {
+  //       id: 6,
+  //       name: "Luke Brooks",
+  //       position: "Five Eight",
+  //       jerseyNumber: 6,
+  //     },
+  //     {
+  //       id: 7,
+  //       name: "Daly Cherry Evans",
+  //       position: "Half Back",
+  //       jerseyNumber: 7,
+  //     },
+  //     {
+  //       id: 8,
+  //       name: "Taniela Paseka",
+  //       position: "Prop",
+  //       jerseyNumber: 8,
+  //     },
+  //     {
+  //       id: 9,
+  //       name: "Lachlan Croker",
+  //       position: "Hooker",
+  //       jerseyNumber: 9,
+  //     },
+  //     {
+  //       id: 10,
+  //       name: "Matt Lodge",
+  //       position: "Prop",
+  //       jerseyNumber: 10,
+  //     },
+  //     {
+  //       id: 11,
+  //       name: "Haumole Olakuatau",
+  //       position: "Second Row",
+  //       jerseyNumber: 11,
+  //     },
+  //     {
+  //       id: 12,
+  //       name: "Karl Lawton",
+  //       position: "Second Row",
+  //       jerseyNumber: 12,
+  //     },
+  //     {
+  //       id: 13,
+  //       name: "Jake Trbojevic",
+  //       position: "Lock",
+  //       jerseyNumber: 13,
+  //     },
+  //     {
+  //       id: 14,
+  //       name: "Nathan Brown",
+  //       position: "Interchange",
+  //       jerseyNumber: 14,
+  //     },
+  //     {
+  //       id: 15,
+  //       name: "Ben Trbojevic",
+  //       position: "Interchange",
+  //       jerseyNumber: 15,
+  //     },
+  //     {
+  //       id: 16,
+  //       name: "Ethan Bullemor",
+  //       position: "Interchange",
+  //       jerseyNumber: 16,
+  //     },
+  //     {
+  //       id: 17,
+  //       name: "Josh Aloai",
+  //       position: "Interchange",
+  //       jerseyNumber: 17,
+  //     },
+  //     {
+  //       id: 18,
+  //       name: "Tof Sippley",
+  //       position: "Reserves",
+  //       jerseyNumber: 18,
+  //     },
+  //     {
+  //       id: 19,
+  //       name: "Brad Parker",
+  //       position: "Reserves",
+  //       jerseyNumber: 19,
+  //     },
+  //     {
+  //       id: 20,
+  //       name: "Aaron Woods",
+  //       position: "Reserves",
+  //       jerseyNumber: 20,
+  //     },
+  //     {
+  //       id: 21,
+  //       name: "Jamie Humphreys",
+  //       position: "Reserves",
+  //       jerseyNumber: 21,
+  //     },
+  //     {
+  //       id: 22,
+  //       name: "Clayton Faulolo",
+  //       position: "Reserves",
+  //       jerseyNumber: 22,
+  //     },
+  //     {
+  //       id: 23,
+  //       name: "Gordon C.K.T",
+  //       position: "Reserves",
+  //       jerseyNumber: 23,
+  //     },
+  //     {
+  //       id: 24,
+  //       name: "Raymond Vaega",
+  //       position: "Reserves",
+  //       jerseyNumber: 24,
+  //     },
+  //   ];
+
+  useEffect(() => {
+    if (id) {
+      const fetchPlayers = async () => {
+        try {
+          const response = await fetch(`/api/teams/${id}`);
+          const data = await response.json();
+          console.log("This is the teams data: ", data);
+          setTeam(data);
+        } catch (error) {
+          console.log("Error fetching players: ", error);
+        }
+      };
+      fetchPlayers();
+    } else {
+      console.log("Invalid ID");
+    }
+  }, [id]);
 
   const games = [
     {
@@ -276,21 +294,20 @@ function IndividualTeamPage() {
     : games;
 
   const renderTeam = (playerId) => {
-    return team
-      .filter((player) => playerId.includes(player.jerseyNumber))
-      .map((player) => (
-        <DisplayPlayerCard
-          key={player.id}
-          player={player}
-          showTeamName={showTeamName}
-        />
-      ));
+    return (
+      team.players &&
+      team.players
+        .filter((player) => playerId.includes(player.jerseyNumber))
+        .map((player) => (
+          <DisplayPlayerCard key={player._id} player={player} teamId={id} />
+        ))
+    );
   };
 
   return (
     <div className={styles.wrapper}>
       <BackButton />
-      <h1 className={styles.teamTitle}>{capitalizedTeamName}</h1>
+      <h1 className={styles.teamTitle}>{team && team.name}</h1>
       <ButtonTeamToggle setShowTeam={setShowTeam} />
       {showTeam ? (
         <div className={styles.teamListContainer}>
