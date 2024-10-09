@@ -36,7 +36,8 @@ const playerStats = mongoose.Schema(
       default: 0,
     },
     opposition: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Team",
       required: true,
     },
   },

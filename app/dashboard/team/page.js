@@ -3,6 +3,7 @@ import DisplayTeamsList from "@/components/DisplayTeamsList";
 export default async function TeamsListPage() {
   const data = await fetch(process.env.WEBSITE_URL + "/teams");
   const teamList = await data.json();
+  console.log(teamList);
 
   return (
     <div className={styles.teamsPageContainer}>

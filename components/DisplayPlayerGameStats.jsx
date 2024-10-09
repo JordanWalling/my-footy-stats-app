@@ -1,4 +1,4 @@
-import styles from "@/app/dashboard/team/[name]/[playerId]/IndividualPlayerStats.module.css";
+import styles from "@/app/dashboard/team/[id]/[playerId]/IndividualPlayerStats.module.css";
 const DisplayPlayerGameStats = ({ game }) => {
   return (
     <li key={game.id} className={styles.li}>

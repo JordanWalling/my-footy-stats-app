@@ -1,5 +1,5 @@
 import DisplayCard from "./DisplayCard";
-import styles from "@/app/dashboard/team/[name]/[playerId]/IndividualPlayerStats.module.css";
+import styles from "@/app/dashboard/team/[id]/[playerId]/IndividualPlayerStats.module.css";
 const PlayerStatsForm = ({ teamChosen, setTeamChosen }) => {
   return (
     <form className={styles.statsForm}>
