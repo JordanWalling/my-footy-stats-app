@@ -1,6 +1,8 @@
 import dbConnect from "@/lib/dbConnect";
 import Team from "@/models/Team";
 import Player from "@/models/Player";
+import PlayerStats from "@/models/PlayerStats";
+import Game from "@/models/Game";
 import { NextResponse } from "next/server";
 
 export async function DELETE(request, { params }) {
@@ -40,7 +42,17 @@ export async function GET(request, { params }) {
   await dbConnect();
   try {
     const { id } = params;
-    const team = await Team.findById(id).populate("players");
+    const team = await Team.findById(id)
+      .populate("players")
+      .populate({
+        path: "games",
+        populate: [
+          { path: "homeTeam", model: "Team" },
+          { path: "awayTeam", model: "Team" },
+          { path: "playerStats", model: "PlayerStats" },
+        ],
+      });
+
     if (!team) {
       return NextResponse.json({ message: "Team not found" });
     }

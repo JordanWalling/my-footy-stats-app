@@ -19,29 +19,21 @@ function IndividualTeamPage() {
   const id = pathname.split("/")[3];
 
   useEffect(() => {
+    console.log("Current ID for fetch: ", id);
     if (id) {
       const fetchPlayers = async () => {
         try {
           const response = await fetch(`/api/teams/${id}`);
           const data = await response.json();
+          console.log("Team data:", data); // Check if data has games
           setTeam(data);
+          setTeamGames(data.games);
         } catch (error) {
           console.log("Error fetching players: ", error);
         }
       };
-      fetchPlayers();
 
-      const fetchGames = async () => {
-        try {
-          const response = await fetch(`/api/games/team?teamId=${id}`);
-          const data = await response.json();
-          console.log("this is the all the games data: ", data);
-          setTeamGames(data);
-        } catch (error) {
-          console.log(error.message);
-        }
-      };
-      fetchGames();
+      fetchPlayers();
     } else {
       console.log("Invalid ID");
     }
@@ -155,25 +147,28 @@ function IndividualTeamPage() {
   //   ];
 
   const renderTeamGame = yearChosen
-    ? teamGames?.filter((game) => game.year === Number(yearChosen))
-    : teamGames;
+    ? teamGames?.filter((game) => game.year === Number(yearChosen)) || []
+    : teamGames || [];
 
   const renderTeam = (playerId) => {
     if (!team.players) {
       console.error("No players found for the team", team);
       return null;
+    } else {
+      return (
+        team.players &&
+        team.players
+          .filter((player) => playerId.includes(player.jerseyNumber))
+          .map((player) => (
+            <DisplayPlayerCard key={player._id} player={player} teamId={id} />
+          ))
+      );
     }
-    return (
-      team.players &&
-      team.players
-        .filter((player) => playerId.includes(player.jerseyNumber))
-        .map((player) => (
-          <DisplayPlayerCard key={player._id} player={player} teamId={id} />
-        ))
-    );
   };
 
-  const uniqueYears = Array.from(new Set(teamGames.map((game) => game.year)));
+  //   const uniqueYears = teamGames
+  //     ? Array.from(new Set(teamGames.map((game) => game.year)))
+  //     : [];
 
   return (
     <div className={styles.wrapper}>
@@ -221,22 +216,23 @@ function IndividualTeamPage() {
                 value={yearChosen}
               >
                 <option value="">Select a Year</option>
-                {teamGames &&
+                {/* {teamGames &&
                   uniqueYears.map((year) => {
                     return (
                       <option key={year} value={year}>
                         {year}
                       </option>
                     );
-                  })}
-                {/* <option value="2024">2024</option>
+                  })} */}
+                <option value="2024">2024</option>
                 <option value="2023">2023</option>
-                <option value="2022">2022</option> */}
+                <option value="2022">2022</option>
               </select>
             </form>
           </div>
 
           {teamGames &&
+            renderTeamGame.length > 0 &&
             renderTeamGame.map((game) => {
               return (
                 <div
