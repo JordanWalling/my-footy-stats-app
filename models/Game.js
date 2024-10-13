@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 
 const gameSchema = mongoose.Schema(
   {
+    round: {
+      type: Number,
+      required: true,
+    },
     year: {
       type: Number,
       required: true,
@@ -28,6 +32,12 @@ const gameSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    playerStats: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "PlayerStats",
+      },
+    ],
   },
   { timestamps: true }
 );

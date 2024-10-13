@@ -21,8 +21,11 @@ const playerSchema = mongoose.Schema(
     },
     stats: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "PlayerStats",
+        game: { type: mongoose.Schema.Types.ObjectId, ref: "Game" },
+        playerStats: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "PlayerStats",
+        },
       },
     ],
   },
