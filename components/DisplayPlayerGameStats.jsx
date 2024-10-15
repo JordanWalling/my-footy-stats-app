@@ -7,6 +7,7 @@ const DisplayPlayerGameStats = ({ game }) => {
           <p>Opposition: </p>
           <p>Tries: </p>
           <p>Try Assists: </p>
+          <p>Line Breaks: </p>
           <p>Metres Run: </p>
           <p>Tackles: </p>
           <p>Missed Tackles: </p>
@@ -14,9 +15,10 @@ const DisplayPlayerGameStats = ({ game }) => {
           <p>Location: </p>
         </div>
         <div className={styles.statValue}>
-          <p>{game.opposition}</p>
+          <p>{game.opposition ? game.opposition?.name : "Unknown"}</p>
           <p>{game.tries}</p>
           <p>{game.tryAssists}</p>
+          <p>{game.lineBreaks}</p>
           <p>{game.metresRun}</p>
           <p>{game.tackles}</p>
           <p>{game.missedTackles}</p>

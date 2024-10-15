@@ -15,17 +15,17 @@ function IndividualTeamPage() {
   const [teamGames, setTeamGames] = useState([]);
   const [team, setTeam] = useState([]);
   const pathname = usePathname();
-  console.log("Current pathname: ", pathname);
+  //   console.log("Current pathname: ", pathname);
   const id = pathname.split("/")[3];
 
   useEffect(() => {
-    console.log("Current ID for fetch: ", id);
+    // console.log("Current ID for fetch: ", id);
     if (id) {
       const fetchPlayers = async () => {
         try {
           const response = await fetch(`/api/teams/${id}`);
           const data = await response.json();
-          console.log("Team data:", data); // Check if data has games
+          //   console.log("Team data:", data);
           setTeam(data);
           setTeamGames(data.games);
         } catch (error) {
@@ -152,7 +152,7 @@ function IndividualTeamPage() {
 
   const renderTeam = (playerId) => {
     if (!team.players) {
-      console.error("No players found for the team", team);
+      //   console.error("No players found for the team", team);
       return null;
     } else {
       return (
