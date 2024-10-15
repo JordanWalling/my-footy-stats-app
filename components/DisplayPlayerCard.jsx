@@ -5,7 +5,7 @@ import DisplayCard from "./DisplayCard";
 const DisplayPlayerCard = ({ player, teamId }) => {
   return (
     <>
-      <Link href={`/dashboard/team/${teamId}/${player.id}`}>
+      <Link href={`/dashboard/team/${teamId}/${player._id}`}>
         <DisplayCard key={player.id} className="w-4 h-4">
           <div className="flex flex-col justify-center items-center">
             <h3 className={player.name.length < 14 ? `text-sm` : `text-xs`}>

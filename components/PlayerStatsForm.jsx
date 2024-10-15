@@ -17,6 +17,7 @@ const PlayerStatsForm = ({ teamChosen, setTeamChosen }) => {
             <option value="Raiders">Raiders</option>
             <option value="Knights">Knights</option>
             <option value="Roosters">Roosters</option>
+            <option value="Rabbitohs">Rabbitohs</option>
           </select>
         </div>
       </DisplayCard>
