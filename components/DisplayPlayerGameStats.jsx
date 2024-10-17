@@ -1,4 +1,5 @@
 import styles from "@/app/dashboard/team/[id]/[playerId]/IndividualPlayerStats.module.css";
+
 const DisplayPlayerGameStats = ({ game }) => {
   return (
     <li key={game.id} className={styles.li}>
@@ -23,7 +24,7 @@ const DisplayPlayerGameStats = ({ game }) => {
           <p>{game.tackles}</p>
           <p>{game.missedTackles}</p>
           <p>{game.tackleBreaks}</p>
-          <p>{game.location}</p>
+          <p className={styles.location}>{game.location}</p>
         </div>
       </div>
     </li>

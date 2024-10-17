@@ -71,7 +71,7 @@
 }
 
 .statName {
-  flex: 2 1 150px;
+  flex: 1 1 150px;
   text-transform: capitalize;
   text-align: end;
   flex-wrap: nowrap;
@@ -83,13 +83,18 @@
 }
 
 .statValue {
-  flex: 1;
+  flex: 1 1 150px;
   text-align: start;
 }
 
 .statValue p {
   font-size: 14px;
   font-weight: 100;
+}
+
+.location {
+  font-size: 16px;
+  text-transform: capitalize;
 }
 
 /* MEDIA QUERIES */
